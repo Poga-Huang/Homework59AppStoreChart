@@ -59,10 +59,14 @@ class FreeAppsTableViewController: UITableViewController{
     }
     
     //傳值
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let controller = segue.destination as? AppDetailTableViewController else{return}
-        controller.appId = selectAppId
-        controller.rank = appRank
+    @IBSegueAction func passFreeAppsData(_ coder: NSCoder) -> AppDetailTableViewController? {
+        guard let selectAppId = selectAppId else {
+            return nil
+        }
+        guard let appRank = appRank else {
+            return nil
+        }
+        return AppDetailTableViewController(coder: coder, appId: selectAppId, rank: appRank)
     }
     
     

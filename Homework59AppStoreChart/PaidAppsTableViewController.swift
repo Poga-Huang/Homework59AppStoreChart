@@ -51,20 +51,23 @@ class PaidAppsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectAppId = paidApps?.feed.results[indexPath.row].id
         appRank = indexPath.row+1
-        performSegue(withIdentifier: segueIdentifier, sender: nil)
-    }
-    //傳值
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let controller = segue.destination as? AppDetailTableViewController else{return}
-        controller.appId = selectAppId
-        controller.rank = appRank
-    }
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if selectAppId != nil && appRank != nil{
-            return true
+            performSegue(withIdentifier: segueIdentifier, sender: nil)
         }else{
-            return false
+            tableView.deselectRow(at: indexPath, animated: false)
         }
     }
+    //傳值
+    @IBSegueAction func passPaidAppsData(_ coder: NSCoder) -> AppDetailTableViewController? {
+        guard let selectAppId = selectAppId else {
+            return nil
+        }
+        guard let appRank = appRank else {
+            return nil
+        }
+        return AppDetailTableViewController(coder: coder, appId: selectAppId, rank: appRank)
+    }
+    
+   
 }
 

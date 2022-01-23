@@ -102,7 +102,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="自動睡眠追蹤器＆鬧鐘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-pP-Hek">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="自動睡眠追蹤器＆鬧鐘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbv-pP-Hek">
                                             <rect key="frame" x="0.0" y="60" width="173.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -328,13 +328,19 @@
                                                                                                 <constraint firstAttribute="width" constant="24" id="TUv-3H-TOX"/>
                                                                                             </constraints>
                                                                                         </imageView>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tantsissa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8M-0K-C59">
+                                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tantsissa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="x8M-0K-C59">
                                                                                             <rect key="frame" x="0.0" y="48" width="45" height="24"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                     </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="trailing" secondItem="x8M-0K-C59" secondAttribute="trailing" id="KXc-qh-4VK"/>
+                                                                                        <constraint firstItem="x8M-0K-C59" firstAttribute="leading" secondItem="awg-hu-p1H" secondAttribute="leading" id="oH4-y6-Wsv"/>
+                                                                                        <constraint firstItem="x8M-0K-C59" firstAttribute="top" secondItem="P5E-cJ-TSw" secondAttribute="bottom" id="pZT-5e-yab"/>
+                                                                                        <constraint firstAttribute="bottom" secondItem="x8M-0K-C59" secondAttribute="bottom" id="yJI-OL-PA5"/>
+                                                                                    </constraints>
                                                                                 </stackView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -691,7 +697,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="DVL-VB-Bur"/>
                     <connections>
-                        <segue destination="wXB-S6-fC8" kind="show" identifier="FreeShowAppPage" id="m9k-e4-mh1"/>
+                        <segue destination="wXB-S6-fC8" kind="show" identifier="FreeShowAppPage" destinationCreationSelector="passFreeAppsData:" id="m9k-e4-mh1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O04-PW-XGU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -815,7 +821,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Nfc-Ar-ld0"/>
                     <connections>
-                        <segue destination="wXB-S6-fC8" kind="show" identifier="PaidShowAppPage" id="jw4-6C-twB"/>
+                        <segue destination="wXB-S6-fC8" kind="show" identifier="PaidShowAppPage" destinationCreationSelector="passPaidAppsData:" id="jw4-6C-twB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CmW-QC-JAz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

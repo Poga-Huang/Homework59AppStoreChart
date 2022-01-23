@@ -36,30 +36,38 @@ class AppDetailTableViewController: UITableViewController,UICollectionViewDataSo
     @IBOutlet weak var appPreviewCollectionView: UICollectionView!
     
     //變數
-    var appId:String?
-    var rank:Int?
+    var appId:String
+    var rank:Int
     var appDetailData:AppDetailResponse?
-
+    init?(coder:NSCoder,appId:String,rank:Int){
+        self.appId = appId
+        self.rank = rank
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.largeTitleDisplayMode = .never
-        
+
         //檢查是否有參數傳入
-        if let appId = appId {
-            AppDetailController.shared.fetchAppDetailResponse(id:appId) { result in
-                switch result{
-                case .success(let appPageResponse):
-                    self.appDetailData = appPageResponse
-                    DispatchQueue.main.async {
-                        self.updateUI(with: self.appDetailData!)
-                        self.appPreviewCollectionView.reloadData()
-                    }
-                case .failure(let error):
-                    self.displayError(error, title: "資料抓取失敗")
+        AppDetailController.shared.fetchAppDetailResponse(id:appId) { result in
+            switch result{
+            case .success(let appPageResponse):
+                self.appDetailData = appPageResponse
+                DispatchQueue.main.async {
+                    self.updateUI(with: self.appDetailData!)
+                    self.appPreviewCollectionView.reloadData()
                 }
+            case .failure(let error):
+                self.displayError(error, title: "資料抓取失敗")
             }
         }
+        
     }
    
     // MARK: - Collection view data source

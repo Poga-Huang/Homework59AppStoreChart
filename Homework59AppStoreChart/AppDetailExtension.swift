@@ -27,7 +27,7 @@ extension AppDetailTableViewController{
          self.ratingLabel.text = String(format: "%.1f", responseData.averageUserRating)
          self.ratingStarImageView.image = ratingStarImage(rating: responseData.averageUserRating)
          self.ageLabel.text = responseData.contentAdvisoryRating
-         self.rankLabel.text = "#\(rank!)"
+         self.rankLabel.text = "#\(rank)"
          self.appCategoryLabel.text = responseData.genres[0]
          self.artistLabel.text = responseData.artistName
          guard responseData.languageCodesISO2A.count != 1 else{
